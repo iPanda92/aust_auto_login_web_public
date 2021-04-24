@@ -33,10 +33,9 @@ def connect_web():
 
 
 def create_start_up_in_turn_on_programm():
-    user_desktop_path = os.path.expanduser('~/AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup')
-    # if True:
-    if not os.path.exists(os.path.join(user_desktop_path, 'auto_login.bat')):
-        auto_login_file = open(os.path.join(user_desktop_path, 'auto_login.bat'), 'w')
+    user_path = os.path.expanduser('~/AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup')
+    if not os.path.exists(os.path.join(user_path, 'auto_login.bat')):
+        auto_login_file = open(os.path.join(user_path, 'auto_login.bat'), 'w')
         auto_login_file.write(os.path.abspath('.')+'/use_request_and_bs4_login.exe')
         auto_login_file.close()
 
