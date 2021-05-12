@@ -9,9 +9,12 @@ def connect_web():
     else:
         print('开始执行登录程序')
         f = open('user_infornation.txt', 'r')
+        # 选择运营商
+        choose = ('@aust', '@unicom')
+        operator = int(f.readline())
         user_infornation = {
             "callback": "dr1003",
-            "DDDDD": f.readline()[0:-1],
+            "DDDDD": f.readline()[0:-1]+choose[operator],
             "upass": f.readline(),
             "0MKKey": "123456",
             "R1": "0",
@@ -33,10 +36,13 @@ def connect_web():
 
 
 def create_start_up_in_turn_on_programm():
-    user_path = os.path.expanduser('~/AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup')
+    # 为用户创建开机自启动
+    user_path = os.path.expanduser(
+        '~/AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup')
     if not os.path.exists(os.path.join(user_path, 'auto_login.bat')):
         auto_login_file = open(os.path.join(user_path, 'auto_login.bat'), 'w')
-        auto_login_file.write(os.path.abspath('.')+'/use_request_and_bs4_login.exe')
+        auto_login_file.write(
+            os.path.abspath('.') + '/use_request_and_bs4_login.exe')
         auto_login_file.close()
 
 
